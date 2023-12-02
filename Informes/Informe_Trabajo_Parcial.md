@@ -105,12 +105,12 @@ La interfaz permitirá a los usuarios crear perfiles, seguir a otros usuarios y 
 
 **Pagina principal**:
 
-![Pagina principal](Imagenes/pagina_principal.jpeg)
+![Pagina principal](Imagenes/pagina_principal.png)
 
 
 **Pagina perfil**:
 
-![Pagina perfil](Imagenes/pagina_perfil.jpeg)
+![Pagina perfil](Imagenes/pagina_perfil.png)
 
 
 ## Fuentes
