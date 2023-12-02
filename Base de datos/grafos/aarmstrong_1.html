@@ -1,0 +1,163 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script src="lib/bindings/utils.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 100vh;
+                 background-color: #ffffff;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"color": "green", "id": "aarmstrong", "label": "aarmstrong", "labelHighlightBold": true, "shape": "dot", "size": 150, "title": "aarmstrong"}, {"color": "gray", "id": "brianellis", "label": "brianellis", "labelHighlightBold": true, "shape": "dot", "size": 40, "title": "brianellis"}, {"color": "gray", "id": "casey53", "label": "casey53", "labelHighlightBold": true, "shape": "dot", "size": 40, "title": "casey53"}, {"color": "red", "id": "davisfernando", "label": "davisfernando", "labelHighlightBold": true, "shape": "dot", "size": 150, "title": "davisfernando"}, {"color": "gray", "id": "dharris", "label": "dharris", "labelHighlightBold": true, "shape": "dot", "size": 40, "title": "dharris"}, {"color": "gray", "id": "diamond23", "label": "diamond23", "labelHighlightBold": true, "shape": "dot", "size": 40, "title": "diamond23"}, {"color": "gray", "id": "donna17", "label": "donna17", "labelHighlightBold": true, "shape": "dot", "size": 40, "title": "donna17"}, {"color": "gray", "id": "dpaul", "label": "dpaul", "labelHighlightBold": true, "shape": "dot", "size": 40, "title": "dpaul"}, {"color": "gray", "id": "henryyesenia", "label": "henryyesenia", "labelHighlightBold": true, "shape": "dot", "size": 40, "title": "henryyesenia"}, {"color": "gray", "id": "hjuarez", "label": "hjuarez", "labelHighlightBold": true, "shape": "dot", "size": 40, "title": "hjuarez"}, {"color": "gray", "id": "john26", "label": "john26", "labelHighlightBold": true, "shape": "dot", "size": 40, "title": "john26"}, {"color": "gray", "id": "joneselizabeth", "label": "joneselizabeth", "labelHighlightBold": true, "shape": "dot", "size": 40, "title": "joneselizabeth"}, {"color": "gray", "id": "jose49", "label": "jose49", "labelHighlightBold": true, "shape": "dot", "size": 40, "title": "jose49"}, {"color": "gray", "id": "kennethsmith", "label": "kennethsmith", "labelHighlightBold": true, "shape": "dot", "size": 40, "title": "kennethsmith"}, {"color": "gray", "id": "mcmahoncody", "label": "mcmahoncody", "labelHighlightBold": true, "shape": "dot", "size": 40, "title": "mcmahoncody"}, {"color": "gray", "id": "murraytimothy", "label": "murraytimothy", "labelHighlightBold": true, "shape": "dot", "size": 40, "title": "murraytimothy"}, {"color": "gray", "id": "olivertina", "label": "olivertina", "labelHighlightBold": true, "shape": "dot", "size": 40, "title": "olivertina"}, {"color": "gray", "id": "ryan48", "label": "ryan48", "labelHighlightBold": true, "shape": "dot", "size": 40, "title": "ryan48"}, {"color": "gray", "id": "sharonramirez", "label": "sharonramirez", "labelHighlightBold": true, "shape": "dot", "size": 40, "title": "sharonramirez"}, {"color": "gray", "id": "ssmith", "label": "ssmith", "labelHighlightBold": true, "shape": "dot", "size": 40, "title": "ssmith"}, {"color": "gray", "id": "terryjeffrey", "label": "terryjeffrey", "labelHighlightBold": true, "shape": "dot", "size": 40, "title": "terryjeffrey"}, {"color": "gray", "id": "ugonzalez", "label": "ugonzalez", "labelHighlightBold": true, "shape": "dot", "size": 40, "title": "ugonzalez"}, {"color": "gray", "id": "wmckinney", "label": "wmckinney", "labelHighlightBold": true, "shape": "dot", "size": 40, "title": "wmckinney"}, {"color": "gray", "id": "wsmith", "label": "wsmith", "labelHighlightBold": true, "shape": "dot", "size": 40, "title": "wsmith"}]);
+                  edges = new vis.DataSet([{"arrows": "to", "color": "gray", "from": "aarmstrong", "to": "brianellis", "width": 1}, {"arrows": "to", "color": "gray", "from": "aarmstrong", "to": "casey53", "width": 1}, {"arrows": "to", "color": "green", "from": "aarmstrong", "to": "davisfernando", "width": 10}, {"arrows": "to", "color": "gray", "from": "aarmstrong", "to": "dharris", "width": 1}, {"arrows": "to", "color": "gray", "from": "aarmstrong", "to": "diamond23", "width": 1}, {"arrows": "to", "color": "gray", "from": "aarmstrong", "to": "donna17", "width": 1}, {"arrows": "to", "color": "gray", "from": "aarmstrong", "to": "dpaul", "width": 1}, {"arrows": "to", "color": "gray", "from": "aarmstrong", "to": "henryyesenia", "width": 1}, {"arrows": "to", "color": "gray", "from": "aarmstrong", "to": "hjuarez", "width": 1}, {"arrows": "to", "color": "gray", "from": "aarmstrong", "to": "john26", "width": 1}, {"arrows": "to", "color": "gray", "from": "aarmstrong", "to": "joneselizabeth", "width": 1}, {"arrows": "to", "color": "gray", "from": "aarmstrong", "to": "jose49", "width": 1}, {"arrows": "to", "color": "gray", "from": "aarmstrong", "to": "kennethsmith", "width": 1}, {"arrows": "to", "color": "gray", "from": "aarmstrong", "to": "mcmahoncody", "width": 1}, {"arrows": "to", "color": "gray", "from": "aarmstrong", "to": "murraytimothy", "width": 1}, {"arrows": "to", "color": "gray", "from": "aarmstrong", "to": "olivertina", "width": 1}, {"arrows": "to", "color": "gray", "from": "aarmstrong", "to": "ryan48", "width": 1}, {"arrows": "to", "color": "gray", "from": "aarmstrong", "to": "sharonramirez", "width": 1}, {"arrows": "to", "color": "gray", "from": "aarmstrong", "to": "ssmith", "width": 1}, {"arrows": "to", "color": "gray", "from": "aarmstrong", "to": "terryjeffrey", "width": 1}, {"arrows": "to", "color": "gray", "from": "aarmstrong", "to": "ugonzalez", "width": 1}, {"arrows": "to", "color": "gray", "from": "aarmstrong", "to": "wmckinney", "width": 1}, {"arrows": "to", "color": "gray", "from": "aarmstrong", "to": "wsmith", "width": 1}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": true,
+            "type": "dynamic"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "barnesHut": {
+            "avoidOverlap": 0,
+            "centralGravity": 0.3,
+            "damping": 0.09,
+            "gravitationalConstant": -80000,
+            "springConstant": 0.001,
+            "springLength": 80
+        },
+        "enabled": true,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+
+                  
+
+
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+
+                  
+
+
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>

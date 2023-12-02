@@ -1,0 +1,15 @@
+.users-container{
+  background-color: aliceblue;
+  height: calc(100vh - 80px);
+  padding-top: 40px;
+}
+.users-container img{
+  height: 80px;
+  width: 80px;
+}
+
+.users-container .container-base{
+  width: 30%;
+  font-size: 30px;
+  margin-top: 20px;
+}

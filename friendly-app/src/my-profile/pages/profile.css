@@ -1,0 +1,91 @@
+.profile-body{
+  background-color: #DBF0F5;
+}
+
+.background-profile{
+  width: 100%;
+  height: 40vh;
+  background-color: #4096AF;
+  min-height: 200px;
+}
+.container-tag{
+  align-items: end;
+  background-color: white;
+}
+.image-profile{
+  background-color: white;
+  border-radius: 150px;
+  height: 100px;
+  width: 100px;
+  position: absolute;
+  margin-left: 100px;
+}
+.name-tag{
+  margin-left: 220px;
+  padding: 20px 0;
+  font-size: 20px;
+  font-weight: 300px;
+}
+
+.profile-body .options{
+  background-color: white;
+  padding: 20px 0;
+}
+
+.check-button{
+  margin-left: auto;
+  margin-right: 30px;
+}
+.follow-button{
+  margin-right: 30px;
+}
+
+.full-container{
+  padding-bottom: 20px;
+}
+
+.left-container{
+  width: 30%;
+  margin-left: 100px;
+  margin-top: 40px;
+}
+.Info-container{
+  width: 10 0%;
+}
+
+.Info-container h1{
+  margin: 0 auto;
+  font-size: 30px;
+ 
+}
+
+.Info-container h2{
+  margin-top: 20px;
+}
+
+
+.profile-post-section{
+  margin-left: auto;
+  margin-right: 50px;
+  height: auto;
+  min-height: 100px;
+
+}
+
+.profile-following{
+  margin-top: 50px;
+}
+.profile-following h1{
+  margin: 0 auto;
+  font-size: 25px;
+}
+
+.route-container{
+  margin-top: 50px;
+}
+
+.route-container h1{
+  width: fit-content;
+  margin: 0 auto;
+  font-size: 30px;
+}
